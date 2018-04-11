@@ -1,0 +1,80 @@
+﻿@using Projekat.Models
+@{
+    ViewBag.Title = "Theme " + ViewBag.Theme.Title;
+}
+
+@helper RenderComments(List<Comment> comments, uint indent)
+{
+    foreach (var comment in comments)
+    {
+        <div class="spaced" style="margin-left: @(indent)em;">
+            @if (comment.LogicallyDeleted)
+            {
+                <p class="comment-content">[Deleted]</p>
+            }
+            else
+            {
+                <p class="comment-content">@comment.Content</p>
+                <p class="horizontal bordered">@comment.AuthorName</p>
+            }
+
+            <p class="horizontal bordered">@comment.CreatedOn.ToShortDateString()</p>
+            
+            @if (!comment.LogicallyDeleted)
+            {
+                <a class="horizontal bordered number" href="/VoteComment/1/@comment.Id">+ @comment.PositiveVotes</a>
+                <a class="horizontal bordered number" href="/VoteComment/0/@comment.Id">- @comment.NegativeVotes</a>
+
+                if (comment.Edited)
+                {
+                    <p class="horizontal bordered">[Edited]</p>
+                }
+
+                <a class="change-link bordered" href="/ReplyComment/@comment.Id">Reply</a>
+                <a class="change-link bordered" href="/EditComment/@comment.Id">Edit</a>
+                <a class="change-link bordered" href="/DeleteComment/@comment.Id">Delete</a>
+            }
+            else
+            {
+                <p class="horizontal bordered number">+ @comment.PositiveVotes</p>
+                <p class="horizontal bordered number">- @comment.NegativeVotes</p>
+            }
+
+            @RenderComments(comment.Children, indent + 1)
+        </div>
+    }
+}
+
+@section styles {
+    @Styles.Render("~/Content/Stylesheets/Theme.css")
+}
+
+<div>
+    <h2 id="themetitle" class="horizontal">@ViewBag.Theme.Title</h2>
+    <a class="horizontal" href="/EditTheme/@ViewBag.Subforum/@ViewBag.Theme.Title">Edit this theme</a>
+    <a class="horizontal" href="/DeleteTheme/@ViewBag.Subforum/@ViewBag.Theme.Title">Delete this theme</a>
+</div>
+<div id="info">
+    <p class="horizontal bordered">@ViewBag.Theme.AuthorName</p>
+    <p class="horizontal bordered">@ViewBag.Theme.CreatedOn.ToShortDateString()</p>
+    <a class="horizontal bordered number" href="/VoteTheme/1/@ViewBag.Subforum/@ViewBag.Theme.Title">+ @ViewBag.Theme.PositiveVotes</a>
+    <a class="horizontal bordered number" href="/VoteTheme/0/@ViewBag.Subforum/@ViewBag.Theme.Title">- @ViewBag.Theme.NegativeVotes</a>
+    <a class="change-link bordered" href="/ReplyTopLevel/@ViewBag.Subforum/@ViewBag.Theme.Title">Reply</a>
+</div>
+<div id="themecontent">
+    @if (ViewBag.Theme.Kind == Kind.Text)
+    {
+        <p>@ViewBag.Theme.Content</p>
+    }
+    else if (ViewBag.Theme.Kind == Kind.Image)
+    {
+        <img id="content-image" src="@ViewBag.Theme.Content" alt="image"/>
+    }
+    else
+    {
+        <a href="@ViewBag.Theme.Content">@ViewBag.Theme.Content</a>
+    }
+</div>
+<div id="comments">
+    @RenderComments(ViewBag.Theme.Comments, 0)
+</div>

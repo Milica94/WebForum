@@ -1,0 +1,9 @@
+﻿<h2>@ViewBag.Title</h2>
+@if (ViewBag.Title == "Creation Successful")
+{
+    <a href="/Subforum/@ViewBag.Subforum/@ViewBag.Theme">Go to @ViewBag.Subforum/@ViewBag.Theme</a>
+}
+else
+{
+    <a href="/CreateTheme/@ViewBag.Subforum">Try again</a>
+}

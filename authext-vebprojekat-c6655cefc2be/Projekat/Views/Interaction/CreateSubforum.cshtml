@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Create a Subforum";
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/CreateSubforum" method="POST">
+    <div class="input-padded">
+        <label for="input-name">Name</label>
+        <input id="input-name" name="name" type="text" placeholder="Name of subforum" required/>
+    </div>
+    
+    <div class="input-padded">
+        <label for="input-description">Description</label>
+        <input id="input-description" name="description" type="text" placeholder="Description of subforum" required/>
+    </div>
+    
+    <div class="input-padded">
+        <label for="input-rules">Rules</label>
+        <textarea id="input-rules" name="rules" required></textarea>
+    </div>
+    
+    <div class="input-padded">
+        <label for="input-iconpath">Icon link</label>
+        <input id="input-iconpath" name="iconpath" type="text" placeholder="Link to subforum's icon" required/>
+    </div>
+
+    <input type="submit" value="Create"/>
+</form>

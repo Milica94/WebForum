@@ -1,0 +1,41 @@
+﻿.number {
+    padding-left: 0.25em;
+}
+
+#themetitle {
+    margin-bottom: 0;
+}
+
+#author {
+    font-size: medium;
+    margin-top: 0;
+    margin-bottom: 2ex;
+    display: inline-block;
+}
+
+#info {
+    margin-bottom: 2ex;
+}
+
+#themecontent {
+    margin-bottom: 2ex;
+    border: 1px solid black;
+}
+
+.comment-content {
+    margin-bottom: 0;
+}
+
+.spaced {
+    margin-bottom: 4ex;
+    max-width: 27em;
+}
+
+#content-image {
+    max-width: 512px;
+    max-height: 512px;
+}
+
+.change-link {
+    padding-right: 0.25em;
+}

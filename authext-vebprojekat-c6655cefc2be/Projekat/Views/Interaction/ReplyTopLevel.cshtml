@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Reply to a theme";
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/ReplyTopLevel/@ViewBag.Comment.SubforumName/@ViewBag.Comment.ThemeTitle" method="POST">
+    <div class="input-padded">
+        <textarea id="input-content"
+                  name="content"
+                  placeholder="Explain why the theme is a pointless waste of resources"
+                  required></textarea>
+    </div>
+
+    <input type="submit" value="Reply"/>
+</form>

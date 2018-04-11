@@ -1,0 +1,12 @@
+﻿.side {
+    float: left;
+    margin-right: 2em;
+}
+
+table, tr, td {
+    border: 1px solid black;
+}
+
+table {
+    border-collapse: collapse;
+}

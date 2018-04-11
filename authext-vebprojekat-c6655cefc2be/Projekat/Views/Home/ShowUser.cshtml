@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "User " + ViewBag.User.Name;
+}
+
+@section styles {
+    @Styles.Render("~/Content/Stylesheets/ShowUser.css")
+}
+
+@helper RenderVote(bool isPositive)
+{
+    if (isPositive)
+    {
+        <td>+</td>
+    }
+    else
+    {
+        <td>-</td>
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+<div>
+    <p>Username: @ViewBag.User.Name</p>
+    <p>Role: @ViewBag.User.Role</p>
+    <p>Registered On: @ViewBag.User.RegisteredOn.ToShortDateString()</p>
+    @if (ViewBag.User.Name == Request.Cookies[CookieKeys.Login]?.Value)
+    {
+        <p>First Name: @ViewBag.User.FirstName</p>
+        <p>Last Name: @ViewBag.User.LastName</p>
+        <p>Phone No: @ViewBag.User.PhoneNo</p>
+        <p>Email: @ViewBag.User.Email</p>
+
+        <a class="display-blocky" href="/InMessages">Received Messages</a>
+        <a class="display-blocky" href="/OutMessages">Sent Messages</a>
+
+        if (ViewBag.User.Role == Projekat.Models.User.ForumRole.Administrator)
+        {
+            <a class="display-blocky padded-top" href="/ChangeType">Change a user's type</a>
+        }
+
+        <table id="theme-votes">
+            <thead>
+            <tr>
+                <td>Subforum</td>
+                <td>Theme</td>
+                <td>Vote</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (var vote in ViewBag.ThemeVotes)
+            {
+                <tr>
+                    <td><a href="/Subforum/@vote.Subforum">@vote.Subforum</a></td>
+                    <td><a href="/Subforum/@vote.Subforum/@vote.Title">@vote.Title</a></td>
+                    @RenderVote(vote.IsPositive)
+                </tr>
+            }
+            </tbody>
+        </table>
+
+        <table id="comment-votes">
+            <thead>
+            <tr>
+                <td>Subforum</td>
+                <td>Theme</td>
+                <td>Author</td>
+                <td>Content</td>
+                <td>Vote</td>
+            </tr>
+            </thead>
+
+            <tbody>
+            @foreach (var vote in ViewBag.CommentVotes)
+            {
+                <tr>
+                    <td><a href="/Subforum/@vote.Subforum">@vote.Subforum</a></td>
+                    <td><a href="/Subforum/@vote.Subforum/@vote.Title">@vote.Title</a></td>
+                    <td><a href="/User/@vote.AuthorName">@vote.AuthorName</a></td>
+                    <td>@vote.Content</td>
+                    @RenderVote(vote.IsPositive)
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>

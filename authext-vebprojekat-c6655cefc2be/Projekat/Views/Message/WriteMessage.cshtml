@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Write a Message";
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/WriteMessage" method="POST">
+    <div class="input-padded">
+        <label for="input-to">To:</label>
+        <input id="input-to" name="to" type="text" placeholder="Recipient's username" required/>
+    </div>
+    
+    <textarea id="input-content" name="content" placeholder="Some witty remark" required>
+    </textarea>
+
+    <input type="submit" value="Send"/>
+</form>

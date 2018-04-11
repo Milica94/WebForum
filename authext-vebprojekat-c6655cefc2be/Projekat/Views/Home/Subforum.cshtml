@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Subforum " + ViewBag.Subforum.Name;
+}
+
+@section styles {
+    @Styles.Render("~/Content/Stylesheets/Subforum.css")
+}
+
+
+<img id="subforum-icon" src="@ViewBag.Subforum.IconPath" alt="Subforum icon"/>
+<div id="name-and-deleter">
+    <h2 class="horizontal" id="subforumname">@ViewBag.Subforum.Name</h2>
+    <a href="/DeleteSubforum/@ViewBag.Subforum.Name">Delete subforum</a>
+</div>
+<h4 id="description">@ViewBag.Subforum.Description</h4>
+
+<div id="sidebar">
+    <div>
+        <a class="display-blocky padded-bottom" href="/CreateTheme/@ViewBag.Subforum.Name">Create a new theme</a>
+        <a class="display-blocky padded-bottom" href="/AddModerator/@ViewBag.Subforum.Name">Add a moderator</a>
+        <a class="display-blocky padded-bottom" href="/RemoveModerator/@ViewBag.Subforum.Name">Remove a moderator</a>
+    </div>
+
+    <div id="rules">
+        <h3>Rules</h3>
+        <ol type="1">
+            @foreach (var rule in ViewBag.Subforum.Rules)
+            {
+                <li>@rule</li>
+            }
+        </ol>
+    </div>
+
+    <div id="moderators">
+        <h3 id="main-moderator-heading">Main moderator</h3>
+        <a href="/User/@ViewBag.Subforum.MainModeratorName">@ViewBag.Subforum.MainModeratorName</a>
+
+        <h3 id="other-moderators-heading">Other moderators</h3>
+        <ul>
+            @foreach (var mod in ViewBag.Subforum.ModeratorNames)
+            {
+                <li><a href="/User/@mod">@mod</a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+<div id="themes">
+    @foreach (var theme in ViewBag.Subforum.Themes)
+    {
+        <div class="theme">
+            <p class="horizontal left">+ @theme.PositiveVotes</p>
+            <p class="horizontal right">- @theme.NegativeVotes</p>
+            <a class="horizontal" href="/Subforum/@ViewBag.Subforum.Name/@theme.Title">@theme.Title</a>
+        </div>
+    }
+</div>

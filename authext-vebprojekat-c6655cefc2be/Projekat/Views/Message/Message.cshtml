@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Message";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="padded-bottom">
+    <p class="horizontal">From:</p>
+    <a class="horizontal" href="/User/@ViewBag.Message.FromName">@ViewBag.Message.FromName</a>
+</div>
+<div class="padded-bottom">
+    <p class="horizontal">To:</p>
+    <a class="horizontal" href="/User/@ViewBag.Message.ToName">@ViewBag.Message.ToName</a>
+</div>
+<textarea readonly="readonly">
+@ViewBag.Message.Content
+</textarea>

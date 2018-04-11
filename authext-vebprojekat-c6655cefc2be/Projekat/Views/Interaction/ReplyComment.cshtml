@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Reply to a comment";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="padded-bottom">
+    <p>Replying to @ViewBag.Comment.AuthorName</p>
+    <textarea readonly>@ViewBag.Comment.Content</textarea>
+</div>
+<p>With...</p>
+<form action="/ReplyComment/@ViewBag.Comment.Id" method="POST">
+    <div class="input-padded">
+        <textarea
+            id="input-content"
+            name="content"
+            placeholder="Explain why the person you're replying to is an idiot"
+            required></textarea>
+    </div>
+    
+    <input type="submit" value="Reply"/>
+</form>

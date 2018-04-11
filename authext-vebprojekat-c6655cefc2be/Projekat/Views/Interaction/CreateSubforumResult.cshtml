@@ -1,0 +1,10 @@
+﻿<h2>@ViewBag.Title</h2>
+<a class="display-blocky" href="/">Go to home</a>
+@if (ViewBag.Title == "Creation Successful")
+{
+    <a class="display-blocky" href="/Subforum/@ViewBag.Subforum">Go to @ViewBag.Subforum</a>
+}
+else
+{
+    <a class="display-blocky" href="/CreateSubforum">Try again</a>
+}

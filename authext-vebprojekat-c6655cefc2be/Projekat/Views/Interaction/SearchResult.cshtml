@@ -1,0 +1,65 @@
+﻿@using Projekat.Models
+@{
+    ViewBag.Title = "Search results";
+}
+
+@section styles {
+    @Styles.Render("~/Content/Stylesheets/Search.css")
+}
+
+<h2>@ViewBag.Title</h2>
+<table>
+    <thead>
+        <tr>
+            @switch ((int)ViewBag.ResultType)
+            {
+            case 0:
+                <td>Name</td>
+                <td>Description</td>
+                <td>MainModerator</td>
+                break;
+
+            case 1:
+                <td>Title</td>
+                <td>Content</td>
+                <td>Author</td>
+                <td>Subforum</td>
+                break;
+
+            case 2:
+                <td>Username</td>
+                <td>Role</td>
+                <td>Registered On</td>
+                break;
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var result in ViewBag.Results)
+        {
+            <tr>
+                @switch ((int)ViewBag.ResultType)
+                {
+                case 0:
+                    <td><a href="/Subforum/@result.Name">@result.Name</a></td>
+                    <td>@result.Description</td>
+                    <td><a href="/User/@result.MainModerator">@result.MainModerator</a></td>
+                    break;
+
+                case 1:
+                    <td><a href="/Subforum/@result.SubforumName/@result.Title">@result.Title</a></td>
+                    <td>@result.Content</td>
+                    <td><a href="/User/@result.AuthorName">@result.AuthorName</a></td>
+                    <td><a href="/Subforum/@result.SubforumName">@result.SubforumName</a></td>
+                    break;
+
+                case 2:
+                    <td><a href="/User/@result.Name">@result.Name</a></td>
+                    <td>@result.Role</td>
+                    <td>@result.RegisteredOn.ToShortDateString()</td>
+                    break;
+                }
+            </tr>
+        }
+    </tbody>
+</table>

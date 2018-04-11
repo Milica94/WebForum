@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Change User's Type";
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/ChangeType" method="POST">
+    <div class="input-padded">
+        <label for="input-name">Name</label>
+        <input id="input-name" name="name" type="text" placeholder="Username" required/>
+    </div>
+    
+    <div class="input-padded">
+        <label for="input-type">Type</label>
+        <select id="input-type" name="type" required>
+            <option value="@((int)Projekat.Models.User.ForumRole.Normal)">@Projekat.Models.User.ForumRole.Normal</option>
+            <option value="@((int)@Projekat.Models.User.ForumRole.Moderator)">@Projekat.Models.User.ForumRole.Moderator</option>
+        </select>
+    </div>
+    
+    <input type="submit" value="Change"/>
+</form>

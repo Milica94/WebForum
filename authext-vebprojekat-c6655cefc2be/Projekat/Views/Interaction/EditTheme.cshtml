@@ -1,0 +1,23 @@
+﻿@using Projekat.Models
+@{
+    ViewBag.Title = "Edit a Theme";
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/EditTheme/@ViewBag.Subforum/@ViewBag.Theme" method="POST">
+    <div class="input-padded">
+        <label class="padded-right" for="input-kind">Kind</label>
+        <select id="input-kind" name="kind" required>
+            <option value="@((int)Kind.Text)">@Kind.Text</option>
+            <option value="@((int)Kind.Image)">@Kind.Image</option>
+            <option value="@((int)Kind.Link)">@Kind.Link</option>
+        </select>
+    </div>
+    
+    <div class="input-padded">
+        <label for="input-content">Content</label>
+        <textarea id="input-content" name="content" required></textarea>
+    </div>
+
+    <input type="submit" value="Edit" />
+</form>

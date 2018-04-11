@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Registration";
+}
+
+
+<h2>@ViewBag.Title</h2>
+<form action="/Register" method="POST">
+    <div class="input-padded">
+        <label for="input-username">Username:</label>
+        <input id="input-username" name="username" type="text" placeholder="Username you'd like" maxlength="16" required/>
+    </div>
+
+    <div class="input-padded">
+        <label for="input-password">Password:</label>
+        <input id="input-password" name="password" type="password" placeholder="Password you'd like" required/>
+    </div>
+
+    <div class="input-padded">
+        <label for="input-first-name">First name</label>
+        <input id="input-first-name" name="first-name" type="text" placeholder="Your first name" required/>
+    </div>
+
+    <div class="input-padded">
+        <label for="input-last-name">Last name</label>
+        <input id="input-last-name" name="last-name" type="text" placeholder="Your last name" required/>
+    </div>
+
+    <div class="input-padded">
+        <label for="input-phone-no">Phone No</label>
+        <input id="input-phone-no" name="phone-no" type="text" placeholder="Your phone number" required/>
+    </div>
+
+    <div class="input-padded">
+        <label for="input-email">Email</label>
+        <input id="input-email" name="email" type="text" placeholder="Your email" required/>
+    </div>
+
+    <input type="submit" value="Register"/>
+</form>

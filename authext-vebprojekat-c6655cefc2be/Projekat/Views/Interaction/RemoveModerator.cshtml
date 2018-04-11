@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "Remove a Moderator";
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/RemoveModerator/@ViewBag.Subforum" method="POST">
+    <div class="input-padded">
+        <label for="input-name">Username</label>
+        <input id="input-name" name="name" type="text" placeholder="Username" required/>
+    </div>
+
+    <input type="submit" value="Remove" />
+</form>

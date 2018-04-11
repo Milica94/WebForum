@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Sent Messages";
+}
+
+@section styles {
+    @Styles.Render("~/Content/Stylesheets/Messages.css")
+}
+
+<div class="switcher">
+    <h2 class="horizontal">@ViewBag.Title</h2>
+    <a class="switcher-link" href="/InMessages">View Received</a>
+    <a class="switcher-link" href="/WriteMessage">Write a Message</a>
+</div>
+<div>
+    <ol type="1">
+        @foreach (var message in ViewBag.Messages)
+        {
+            <li class="entry">
+                <a class="mail-link" href="/Messages/@message.Id">@message.ToName</a>
+            </li>
+        }
+    </ol>
+</div>

@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Search";
+}
+
+@section styles {
+    @Styles.Render("~/Content/Stylesheets/Search.css")
+}
+
+<h2>@ViewBag.Title</h2>
+<form class="side" action="/Search/0" method="POST">
+    <h3>Subforum</h3>
+    <div class="input-padded">
+        <label for="input-subforum-name">Name</label>
+        <input id="input-subforum-name" name="subforum-name" type="text" placeholder="Subforum name"/>
+    </div>
+        
+    <div class="input-padded">
+        <label for="input-subforum-description">Description</label>
+        <input id="input-subforum-description" name="subforum-description" type="text" placeholder="Subforum description"/>
+    </div>
+        
+    <div class="input-padded">
+        <label for="input-subforum-mainmoderator">Main moderator</label>
+        <input id="input-subforum-mainmoderator" name="subforum-mainmoderator" type="text" placeholder="Subforum main moderator"/>
+    </div>
+    
+    <input type="submit" value="Search"/>
+</form>
+
+<form class="side" action="/Search/1" method="POST">
+    <h3>Theme</h3>
+    <div class="input-padded">
+        <label for="input-theme-title">Title</label>
+        <input id="input-theme-title" name="theme-title" type="text" placeholder="Theme title" />
+    </div>
+
+    <div class="input-padded">
+        <label for="input-theme-content">Content</label>
+        <input id="input-theme-content" name="theme-content" type="text" placeholder="Theme content" />
+    </div>
+
+    <div class="input-padded">
+        <label for="input-theme-author">Author</label>
+        <input id="input-theme-author" name="theme-author" type="text" placeholder="Theme author" />
+    </div>
+
+    <div class="input-padded">
+        <label for="input-theme-subforum">Subforum</label>
+        <input id="input-theme-subforum" name="theme-subforum" type="text" placeholder="Theme subforum" />
+    </div>
+    
+    <input type="submit" value="Search"/>
+</form>
+
+<form class="side" action="/Search/2" method="POST">
+    <h3>User</h3>
+    <div class="input-padded">
+        <label for="input-user-name">Name</label>
+        <input id="input-user-name" name="user-name" type="text" placeholder="User name" />
+    </div>
+
+    <input type="submit" value="Search" />
+</form>

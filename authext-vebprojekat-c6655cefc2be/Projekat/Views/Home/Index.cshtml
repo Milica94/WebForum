@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@section styles {
+    @Styles.Render("~/Content/Stylesheets/Index.css")
+}
+
+<div id="the-title">
+    <h2 class="horizontal">Subforums</h2>
+    <a class="horizontal" href="/CreateSubforum">Create a subforum</a>
+</div>
+<div>
+    @foreach (var name in ViewBag.Names)
+    {
+        <div class="subforum">
+            <a href="/Subforum/@name">@name</a>
+        </div>
+    }
+</div>

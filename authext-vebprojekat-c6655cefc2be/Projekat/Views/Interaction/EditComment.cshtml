@@ -1,0 +1,10 @@
+﻿@{
+    ViewBag.Title = "Edit a comment";
+}
+
+<h2>@ViewBag.Title</h2>
+<form action="/EditComment/@ViewBag.Comment.Id" method="POST">
+    <textarea name="content" required>@ViewBag.Comment.Content</textarea>
+    
+    <input type="submit" value="Edit"/>
+</form>

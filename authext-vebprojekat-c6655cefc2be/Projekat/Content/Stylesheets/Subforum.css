@@ -1,0 +1,58 @@
+﻿#sidebar {
+    box-sizing: border-box;
+    background-color: bisque;
+    width: 400px;
+    float: right;
+    padding: 1ex 1em;
+    border: 1px solid black;
+}
+
+#main-moderator-heading {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+#other-moderators-heading {
+    margin-top: 0;
+}
+
+#subforumname {
+    margin-bottom: 0.25ex;
+}
+
+#description {
+    margin-top: 0;
+}
+
+.horizontal {
+    display: inline;
+}
+
+.left {
+    border-right: 1px solid black;
+    padding-right: 2em;
+}
+
+.right {
+    border-right: 1px solid black;
+    padding-right: 2em;
+    margin-right: 0.5em;
+}
+
+#themes {
+    width: calc(100% - 450px);
+}
+
+.theme {
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5ex;
+}
+
+#subforum-icon {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+#name-and-deleter {
+    margin-top: 2ex;
+}
